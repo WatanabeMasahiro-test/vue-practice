@@ -1,26 +1,58 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
-  <HelloWorld msg="Welcome to Your Vue.js App"/>
+  <h1>{{ title }}</h1>
+  <ComponentTest1 hello-msg="ハローメッセージ" v-on:notification="handleEvent"/>
+  <button @click="testMethod()">おためし</button>
+  <hr class="double-line">
+  <div class="bg-ghostwhite">
+    <table>
+      <tr>
+        <th>1</th>
+        <th>2</th>
+        <th>3</th>
+      </tr>
+      <tr>
+        <td>サンプル</td>
+        <td>サンプル</td>
+        <td>サンプル</td>
+      </tr>
+    </table>
+  </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import ComponentTest1 from './components/ComponentTest1.vue'
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
-  }
+    ComponentTest1,
+  },
+  data: () => ({
+    title: "ここにタイトル",
+  }),
+  methods: {
+      testMethod() {
+        return alert("HELLO!");
+      },
+      handleEvent() {
+        return alert("子コンポーネントからの通知");
+      },
+  },
 }
 </script>
 
 <style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+body {
   text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
 }
+
+.double-line {
+  border-style: double;
+}
+
+.bg-ghostwhite {
+  background-color: silver;
+}
+
 </style>
