@@ -3,5 +3,5 @@ import App from './App.vue'
 // import router from './router/index'
 
 createApp(App)
-    // .use(route)
-.mount('#app')
+// .use(route)
+  .mount('#app')

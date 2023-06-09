@@ -1,22 +1,22 @@
+<script setup>
+const test = 'TEST'
+
+const props = defineProps({
+  helloMsg: String
+})
+
+const emit = defineEmits(['notification'])
+
+</script>
+
 <template>
   <div class="hello">
-    <p>{{ helloMsg }}</p>
-    <button @click="$emit('notification')">通知</button>
+    <p>{{ test }}</p>
+    <p>{{ props['helloMsg'] }}</p>
+    <button @click="emit('notification')">通知</button>
     <hr>
   </div>
 </template>
-
-<script>
-export default {
-  name: 'ComponentTest1',
-  props: {
-    helloMsg: String
-  },
-  methods: {
-
-  }
-}
-</script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
