@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'ComponentTest1',
   props: {
     helloMsg: String
   },

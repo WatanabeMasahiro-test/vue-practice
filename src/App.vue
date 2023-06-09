@@ -1,50 +1,40 @@
 <template>
   <img alt="Vue logo" src="./assets/logo.png">
   <h1>{{ title }}</h1>
-  <ComponentTest1 hello-msg="ハローメッセージ" :notification="handleEvent"/>
+  <ComponentTest1 hello-msg="ハローメッセージ" @notification="handleEvent"/>
   <button @click="testMethod()">おためし</button>
   <hr class="double-line">
   <div class="bg-silver p-20px">
     <table v-if="bpi != false">
       <tr>
-        <th>1</th>
-        <th>2</th>
-        <th>3</th>
+        <th></th>
+        <th v-for="i in 5" :key="i">{{ i }}</th>
       </tr>
-      <tr>
-        <td v-for="item in bpi" :key="item.id">{{ item.code }}</td>
-      </tr>
-      <tr>
-        <td v-for="item in bpi" :key="item.id">{{ item.symbol }}</td>
-      </tr>
-      <tr>
-        <td v-for="item in bpi" :key="item.id">{{ item.rate }}</td>
-      </tr>
-      <tr>
-        <td v-for="item in bpi" :key="item.id">{{ item.description }}</td>
-      </tr>
-      <tr>
-        <td v-for="item in bpi" :key="item.id">{{ item.rate_float }}</td>
+      <tr 
+        v-for="(item, index) in bpi" 
+        :key="item.id"
+      >
+        <th>{{ index }}</th>
+        <td>{{ item.code }}</td>
+        <td>{{ item.symbol }}</td>
+        <td>{{ item.rate }}</td>
+        <td>{{ item.description }}</td>
+        <td>{{ item.rate_float }}</td>
       </tr>
     </table>
 
     <table v-if="dbJson != false">
       <tr>
-        <th>1</th>
-        <th>2</th>
-        <th>3</th>
-        <th>4</th>
-        <th>5</th>
-        <th>6</th>
+        <th></th>
+        <th v-for="i in 2" :key="i" class="w-100">{{ i }}</th>
       </tr>
-      <tr>
-        <td v-for="item in dbJson" :key="item.id">{{ item.title }}</td>
-      </tr>
-      <tr>
-        <td v-for="item in dbJson" :key="item.id">{{ item.score }}</td>
-      </tr>
-      <tr>
-        <td v-for="item in dbJson" :key="item.id">{{ item.id }}</td>
+      <tr
+        v-for="(item) in dbJson" 
+        :key="item.id"
+      >
+        <th>{{ item.id }}</th>
+        <td>{{ item.title }}</td>
+        <td>{{ item.score }}</td>
       </tr>
     </table>
 
@@ -111,6 +101,10 @@
     background-color: ghostwhite;
   }
 
+  th, td {
+    padding: 2px 10px
+  }
+
   .double-line {
     border-style: double;
   }
@@ -121,6 +115,10 @@
 
   .p-20px {
     padding: 20px;
+  }
+
+  .w-100 {
+    width: 100px;
   }
 
 </style>
