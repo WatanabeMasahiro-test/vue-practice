@@ -1,5 +1,5 @@
-<script setup lang="ts">
-const test: String = 'TEST'
+<script setup>
+const test = 'TEST'
 
 const props = defineProps({
   helloMsg: String
