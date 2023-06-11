@@ -1,36 +1,37 @@
-<script setup>
+<script setup lang="ts">
 import { ref, onMounted } from 'vue'
 import ComponentTest1 from './components/ComponentTest1.vue'
 import axios from 'axios'
 
 const title = 'ここにタイトル'
-const bpi = ref(null)
-const dbJson = ref(null)
+const bpi:any = ref(null)
+const dbJson:any = ref(null)
 
 const testMethod = () => alert('HELLO!')
 const handleEvent = () => alert('子コンポーネントからの通知')
 
 onMounted(() => {
-  axios.get('https://api.coindesk.com/v1/bpi/currentprice.json')
-    .then(function (response) {
-      console.log(response.data.bpi) // デバッグ用にconsoleに出力
-      bpi.value = response.data.bpi
-    })
-    .catch(function (error) {
-      console.log(error)
-      bpi.value = null
-    }
-    )
-  axios.get('/db.json')
-    .then(function (response) {
-      console.log(response.data.posts) // デバッグ用にconsoleに出力
-      dbJson.value = response.data.posts
-    })
-    .catch(function (error) {
-      console.log(error)
-      dbJson.value = null
-    }
-    )
+  try {
+    axios.get('https://api.coindesk.com/v1/bpi/currentprice.json')
+      .then(function (response) {
+        console.log(response.data.bpi) // デバッグ用にconsoleに出力
+        bpi.value = response.data.bpi
+      })
+  } catch (error) {
+    console.log(error)
+    bpi.value = null
+  }
+
+  try {
+    axios.get('/db.json')
+      .then(function (response) {
+        console.log(response.data.posts) // デバッグ用にconsoleに出力
+        dbJson.value = response.data.posts
+      })
+  } catch (error) {
+    console.log(error)
+    dbJson.value = null
+  }
 })
 </script>
 
@@ -52,7 +53,7 @@ onMounted(() => {
           :key="item.id"
         >
           <th>{{ index }}</th>
-          <td>{{ item.code }}</td>
+          <td>{{ item.code as string }}</td>
           <td>{{ item.symbol }}</td>
           <td>{{ item.rate }}</td>
           <td>{{ item.description }}</td>
