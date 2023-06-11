@@ -4,8 +4,8 @@ import ComponentTest1 from './components/ComponentTest1.vue'
 import axios from 'axios'
 
 const title = 'ここにタイトル'
-var bpi = ref(null)
-var dbJson = ref(null)
+const bpi = ref(null)
+const dbJson = ref(null)
 
 const testMethod = () => alert('HELLO!')
 const handleEvent = () => alert('子コンポーネントからの通知')
@@ -18,7 +18,7 @@ onMounted(() => {
     })
     .catch(function (error) {
       console.log(error)
-      bpi.value = false
+      bpi.value = null
     }
     )
   axios.get('/db.json')
@@ -28,7 +28,7 @@ onMounted(() => {
     })
     .catch(function (error) {
       console.log(error)
-      dbJson.value = false
+      dbJson.value = null
     }
     )
 })
