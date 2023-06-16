@@ -53,7 +53,7 @@ onMounted(() => {
           :key="item.id"
         >
           <th>{{ index }}</th>
-          <td>{{ item.code as string }}</td>
+          <td>{{ item.code }}</td>
           <td>{{ item.symbol }}</td>
           <td>{{ item.rate }}</td>
           <td>{{ item.description }}</td>
